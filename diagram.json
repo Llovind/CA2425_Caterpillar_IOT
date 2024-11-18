@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "author": "DINO KURNIAWAN 1",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp1", "top": -4.9, "left": -33.8, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": 0.3, "left": 100.2, "attrs": {} },
+    { "type": "wokwi-hc-sr04", "id": "ultrasonic1", "top": 49.5, "left": -224.9, "attrs": {} },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -93.6,
+      "left": 88.2,
+      "attrs": { "volume": "0.1" }
+    },
+    { "type": "wokwi-servo", "id": "servo1", "top": -184.4, "left": -67.2, "attrs": {} },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": -120.85,
+      "left": -144,
+      "attrs": { "value": "1000" }
+    }
+  ],
+  "connections": [
+    [ "dht1:VCC", "esp1:3V3", "red", [ "v0" ] ],
+    [ "dht1:SDA", "esp1:D4", "green", [ "v0" ] ],
+    [ "dht1:GND", "esp1:GND.1", "black", [ "v0" ] ],
+    [ "ultrasonic1:VCC", "esp1:VIN", "red", [ "v0" ] ],
+    [ "ultrasonic1:TRIG", "esp1:D5", "green", [ "v57.6", "h220.4", "v-115.2" ] ],
+    [ "ultrasonic1:ECHO", "esp1:D18", "green", [ "v48", "h220", "v-9.6" ] ],
+    [ "ultrasonic1:GND", "esp1:GND.2", "black", [ "v0" ] ],
+    [ "bz1:2", "esp1:D19", "green", [ "v0" ] ],
+    [ "bz1:1", "esp1:GND.2", "green", [ "v9.6", "h-163.2", "v124.8" ] ],
+    [ "servo1:GND", "esp1:GND.2", "black", [ "h0", "v268.8" ] ],
+    [ "servo1:PWM", "esp1:D15", "green", [ "h163.2", "v249.8" ] ],
+    [ "servo1:V+", "r1:2", "green", [ "h0" ] ],
+    [ "r1:1", "esp1:VIN", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
